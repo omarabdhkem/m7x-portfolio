@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Omar Abd Al-Hakim | M7x - Profile</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-color: #0D0F1B;
+            --primary-glow-color: #8A2BE2; /* BlueViolet */
+            --secondary-glow-color: #0077FF; /* Bright Blue */
+            --text-primary: #E0E6F1;
+            --text-secondary: #A0AEC0;
+            --glass-bg: rgba(22, 25, 42, 0.5);
+            --glass-border: rgba(138, 43, 226, 0.3);
+            --hover-border: rgba(0, 119, 255, 0.7);
+        }
+
+        /* :: Custom Scrollbar :: */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--primary-glow-color), var(--secondary-glow-color));
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--hover-border); }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Roboto', sans-serif;
+            background-image:
+                radial-gradient(circle at 15% 50%, var(--primary-glow-color), transparent 25%),
+                radial-gradient(circle at 85% 30%, var(--secondary-glow-color), transparent 25%);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            overflow-x: hidden;
+        }
+
+        .font-space { font-family: 'Space Grotesk', sans-serif; }
+        .text-gradient {
+            background: linear-gradient(90deg, var(--text-primary), var(--secondary-glow-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* :: Section Title Underline Effect :: */
+        .section-title { position: relative; display: inline-block; }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-glow-color), var(--secondary-glow-color));
+            transition: width 0.3s ease-in-out;
+        }
+        .section-title:hover::after { width: 100%; }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+        .glass-card:hover {
+            border-color: var(--hover-border);
+            box-shadow: 0 0 25px rgba(0, 119, 255, 0.2);
+        }
+        
+        /* Navbar Style */
+        .nav-glass {
+            background: rgba(13, 15, 27, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        /* Profile Image Animation */
+        .profile-image-wrapper { position: relative; padding: 5px; }
+        .profile-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            padding: 2px;
+            background: linear-gradient(45deg, var(--primary-glow-color), var(--secondary-glow-color));
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: rotate 4s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Timeline Style */
+        .timeline-line {
+            position: absolute;
+            left: 7px; top: 1rem; bottom: 1rem;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--primary-glow-color), transparent);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0.6rem;
+            width: 16px;
+            height: 16px;
+            background-color: var(--bg-color);
+            border: 3px solid var(--primary-glow-color);
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+        .timeline-item:hover::before {
+            background-color: var(--primary-glow-color);
+            box-shadow: 0 0 15px var(--primary-glow-color);
+        }
+
+        /* Tech Icon Style */
+        .tech-item {
+            background: rgba(30, 34, 56, 0.7);
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        .tech-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--hover-border);
+            background: var(--glass-bg);
+            box-shadow: 0 0 15px rgba(0, 119, 255, 0.3);
+        }
+        
+        /* General Fade-in Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 0.8s ease-out forwards; }
+    </style>
+</head>
+<body class="pt-24 sm:pt-32">
+
+    <nav class="w-full px-4 md:px-12 py-4 flex items-center justify-between nav-glass fixed top-0 left-0 right-0 z-50">
+        <a href="#" class="flex items-center gap-3">
+            <span class="font-space text-2xl font-bold text-gradient">M7x</span>
+        </a>
+        <div class="flex items-center gap-6">
+            <a href="#projects" class="text-sm font-medium uppercase tracking-wider text-text-secondary hover:text-text-primary transition-colors">المشاريع</a>
+            <a href="#contact" class="text-sm font-medium uppercase tracking-wider text-text-secondary hover:text-text-primary transition-colors">تواصل معي</a>
+        </div>
+    </nav>
+
+    <main class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 px-4 md:px-6">
+        
+        <aside class="lg:col-span-1 space-y-8 lg:sticky top-24 h-fit">
+            <div class="glass-card p-6 text-center fade-in">
+                <div class="profile-image-wrapper w-40 h-40 mx-auto mb-4">
+                    <img class="rounded-full w-full h-full object-cover" src="https://res.cloudinary.com/ddc3tyoob/image/upload/Picsart_25-06-08_16-52-17-007_hgzwts.jpg" alt="Profile Picture">
+                </div>
+                <h1 class="font-space text-3xl font-bold text-gradient">Omar Abd Al-Hakim</h1>
+                <p class="text-text-secondary mt-1 tracking-wide">Web Developer & AI Engineer</p>
+                
+                <div class="grid grid-cols-3 gap-3 mt-8 text-center">
+                    <div class="flex flex-col gap-1 rounded-lg p-3 bg-black/20">
+                        <p class="font-space text-2xl font-bold text-gradient">+5</p>
+                        <p class="text-xs uppercase tracking-wider text-text-secondary">سنوات خبرة</p>
+                    </div>
+                    <div class="flex flex-col gap-1 rounded-lg p-3 bg-black/20">
+                        <p class="font-space text-2xl font-bold text-gradient">+10</p>
+                        <p class="text-xs uppercase tracking-wider text-text-secondary">مشاريع مكتملة</p>
+                    </div>
+                    <div class="flex flex-col gap-1 rounded-lg p-3 bg-black/20">
+                        <p class="font-space text-2xl font-bold text-gradient">+10</p>
+                        <p class="text-xs uppercase tracking-wider text-text-secondary">منشورات تقنية</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contact" class="glass-card p-6 fade-in" style="animation-delay: 0.2s;">
+                 <h3 class="font-space text-xl font-bold text-gradient mb-5 section-title">- تواصل معي</h3>
+                 <div class="space-y-4 pt-4">
+                    <a href="mailto:omarabdhkem@gmail.com" class="flex items-center gap-4 group">
+                        <span class="material-symbols-outlined text-text-secondary group-hover:text-gradient transition-colors">mail</span>
+                        <p class="text-sm text-text-secondary group-hover:text-text-primary transition-colors">omarabdhkem@gmail.com</p>
+                    </a>
+                    <a href="https://www.linkedin.com/in/omarabdhkem" target="_blank" class="flex items-center gap-4 group">
+                        <svg class="w-6 h-6 text-text-secondary group-hover:text-text-primary transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        <p class="text-sm text-text-secondary group-hover:text-text-primary transition-colors">linkedin.com/in/omarabdhkem</p>
+                    </a>
+                    <a href="https://github.com/omarabdhkem" target="_blank" class="flex items-center gap-4 group">
+                         <svg class="w-6 h-6 text-text-secondary group-hover:text-text-primary transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        <p class="text-sm text-text-secondary group-hover:text-text-primary transition-colors">github.com/omarabdhkem</p>
+                    </a>
+                    <a href="https://www.youtube.com/@M_7_x1" target="_blank" class="flex items-center gap-4 group">
+                        <svg class="w-6 h-6 text-text-secondary group-hover:text-text-primary transition-colors" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                        <p class="text-sm text-text-secondary group-hover:text-text-primary transition-colors">youtube.com/@M_7_x1</p>
+                    </a>
+                 </div>
+            </div>
+        </aside>
+
+        <div class="lg:col-span-2 space-y-8">
+            <div class="glass-card p-8 fade-in" style="animation-delay: 0.4s;">
+                <h2 class="font-space text-2xl font-bold text-gradient mb-4 section-title">- عني</h2>
+                <p class="text-text-secondary leading-relaxed pt-4">
+                    مرحباً، أنا عمر. مهندس برمجيات متخصص في بناء وتطوير البنية التحتية للمستقبل. أجمع بين تطوير الويب، استراتيجيات الذكاء الاصطناعي، والأنظمة اللامركزية لتصميم حلول تقنية مبتكرة.
+                    <br><br>
+                    "أنا لا أتنبأ بالمستقبل... أنا من يصممه."
+                </p>
+            </div>
+            
+            <div id="experience" class="glass-card p-8 fade-in" style="animation-delay: 0.6s;">
+                <h2 class="font-space text-2xl font-bold text-gradient mb-8 section-title">- المسار المهني</h2>
+                <div class="relative pl-8 space-y-10 pt-4">
+                    <div class="timeline-line"></div>
+                    <div class="relative timeline-item">
+                        <h4 class="font-space text-lg font-medium text-text-primary">كبير مهندسي الذكاء الاصطناعي</h4>
+                        <p class="text-sm text-text-secondary">شركة تقنيات المبتكرين</p>
+                    </div>
+                    <div class="relative timeline-item">
+                        <h4 class="font-space text-lg font-medium text-text-primary">باحث في الذكاء الاصطناعي</h4>
+                        <p class="text-sm text-text-secondary">مختبرات الذكاء الاصطناعي المتقدمة</p>
+                    </div>
+                    <div class="relative timeline-item">
+                        <h4 class="font-space text-lg font-medium text-text-primary">مطور ذكاء اصطناعي</h4>
+                        <p class="text-sm text-text-secondary">شركة حلول الذكاء الاصطناعي</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="projects" class="glass-card p-8 fade-in" style="animation-delay: 0.8s;">
+                <h2 class="font-space text-2xl font-bold text-gradient mb-8 section-title">- أبرز المشاريع</h2>
+                 <div class="space-y-6 pt-4">
+                    <div class="group p-3 rounded-lg hover:bg-black/20 transition-colors">
+                        <h4 class="font-space text-lg font-medium text-text-primary group-hover:text-gradient transition-colors">نظام توصيات بالذكاء الاصطناعي</h4>
+                        <p class="text-sm text-text-secondary mt-1">بناء محرك توصيات للمحتوى باستخدام تعلم الآلة لزيادة تفاعل المستخدمين.</p>
+                    </div>
+                     <div class="group p-3 rounded-lg hover:bg-black/20 transition-colors">
+                        <h4 class="font-space text-lg font-medium text-text-primary group-hover:text-gradient transition-colors">منصة تداول لامركزية (DeFi)</h4>
+                        <p class="text-sm text-text-secondary mt-1">تطوير واجهات أمامية آمنة وتفاعلية لمنصة تداول قائمة على البلوك تشين باستخدام React.js.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card p-8 fade-in" style="animation-delay: 1s;">
+                <h2 class="font-space text-2xl font-bold text-gradient mb-6 section-title">- التقنيات</h2>
+                <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 pt-4">
+                    <div class="flex flex-col items-center justify-center p-3 tech-item rounded-lg aspect-square">
+                        <img alt="Python" class="h-10 w-10 mb-2 opacity-80" src="https://www.vectorlogo.zone/logos/python/python-icon.svg"/>
+                        <p class="text-xs text-text-secondary uppercase">Python</p>
+                    </div>
+                     <div class="flex flex-col items-center justify-center p-3 tech-item rounded-lg aspect-square">
+                        <img alt="JavaScript" class="h-10 w-10 mb-2 opacity-80" src="https://www.vectorlogo.zone/logos/javascript/javascript-icon.svg"/>
+                        <p class="text-xs text-text-secondary uppercase">JavaScript</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-3 tech-item rounded-lg aspect-square">
+                        <img alt="React" class="h-10 w-10 mb-2 opacity-80" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-icon.svg"/>
+                        <p class="text-xs text-text-secondary uppercase">React</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-3 tech-item rounded-lg aspect-square">
+                        <img alt="Node.js" class="h-10 w-10 mb-2 opacity-80" src="https://www.vectorlogo.zone/logos/nodejs/nodejs-icon.svg"/>
+                        <p class="text-xs text-text-secondary uppercase">Node.js</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-center p-3 tech-item rounded-lg aspect-square">
+                        <img alt="HTML5" class="h-10 w-10 mb-2 opacity-80" src="https://www.vectorlogo.zone/logos/w3_html5/w3_html5-icon.svg"/>
+                        <p class="text-xs text-text-secondary uppercase">HTML5</p>
+                    </div>
+                     <div class="flex flex-col items-center justify-center p-3 tech-item rounded-lg aspect-square">
+                        <img alt="CSS3" class="h-10 w-10 mb-2 opacity-80" src="https://www.vectorlogo.zone/logos/w3_css/w3_css-icon.svg"/>
+                        <p class="text-xs text-text-secondary uppercase">CSS3</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="text-center py-8 mt-8">
+        <p class="text-sm text-text-secondary">© 2025 Omar Abd Al-Hakim (M7x). All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
